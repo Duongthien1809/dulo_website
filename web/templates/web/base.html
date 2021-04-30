@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+{% include "../widgets/Header.html" %}
+<body style="background-color:Azure;">
+{% include "../widgets/navigation.html" %}
+{% block authForm %}
+<div class="container">
+    <div class="col">
+        <div class="col-md-20 ">
+            <div class="main box-border">
+                <div class="row-md-9">
+                    <!-- /.row -->
+                    <div class="col-md-18 col-md-offset-0">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    {% csrf_token %}
+                                    {% for post in post_view %}
+                                    <div class="row-md-9">
+                                        <!-- /.row -->
+                                        <div class="col">
+                                            <div class="col-md-4 text-left col-sm-6 col-xs-6">
+                                                <div class="thumbnail product-box">
+                                                    <img src="{{post.image.url}}" alt=""
+                                                         style="wight:350px;height:150px"/>
+                                                    <div class="caption">
+                                                        <h3><a href="#"><strong>{{post.title}}</strong></a></h3>
+                                                        <p>Preis: {{post.preis}} €</p>
+                                                        <p><a href="{% url 'web:einkaufen' %}" class="btn btn-success"
+                                                              role="button">Einkaufwagen</a>
+                                                            <a href="{% url 'web:post_detail' post.pk %}"
+                                                               class="btn btn-primary" role="button">Detail
+                                                                sehen</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+</div>
+{% endblock %}
+
+{% include "../widgets/footer.html" %}
+
+
+<!--Core JavaScript file  -->
+<script src="{% static 'assets/js/jquery-1.10.2.js"></script>
+<!--bootstrap JavaScript file  -->
+<script src="{% static 'assets/js/bootstrap.js"></script>
+<!--Slider JavaScript file  -->
+<script src="{% static 'assets/ItemSlider/js/modernizr.custom.63321.js"></script>
+<script src="{% static 'assets/ItemSlider/js/jquery.catslider.js"></script>
+<script>
+        $(function () {
+
+            $('#mi-slider').catslider();
+
+        });
+
+
+
+
+
+
+
+</script>
+</body>
+
+
+</html>

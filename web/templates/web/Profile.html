@@ -1,0 +1,20 @@
+{% extends 'web/base.html' %}
+{% block title %} Profile-detail {% endblock %}
+
+{% block authForm %}
+<div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Profile Details</strong></div>
+        <div class="panel-body">
+            <ul>
+                <p><strong>Benutzername</strong>: {{request.user.username}}</p>
+                <p><strong>Vorname</strong>: {{request.user.first_name}}</p>
+                <p><strong>Nachname</strong>: {{request.user.last_name}}</p>
+                <p><strong>Email</strong>: {{request.user.email}}</p>
+                <a href="#">Account Information ändern</a>
+            </ul>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'web/base.html' %}
+{% block title %} Löschen {% endblock %}
+{% block authForm %}
+<div class="main">
+    <!-- Create a Form -->
+    <form action="{% url 'web:delete_post' post.pk %}" method="POST" class="btn btn-danger btn-sm" >
+        {% csrf_token %}
+        Sind Sie sicher diesen Post zu löschen?
+        <input type="submit" value="Ja" />
+        <a href="{% url 'web:post_detail' post.pk %}">Cancel </a>
+    </form>
+</div>
+{% endblock %}

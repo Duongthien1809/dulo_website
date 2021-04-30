@@ -1,0 +1,40 @@
+{% extends 'web/base.html'%}
+{% block title %} gepostete Anzeige{% endblock %}
+{% block authForm %}
+<div class="container">
+    <div class="col">
+        <div class="col-md-15 ">
+            {% for post in object_list %}
+            <div class="row-md-9">
+                <div class="col">
+                    <div class="col-md-4 text-left col-sm-6 col-xs-6">
+                        <img src="{{post.image.url}}" alt=""
+                             style="wight:350px;height:150px"/>
+                        <div class="caption">
+                            <h3><strong>{{post.title}}</strong></h3>
+                            <p>Preis: {{post.preis}} €</p>
+                            <p>Beschreibung: {{post.beschreibung}}</p>
+                            <p>Created at: {{post.created_at}}</p>
+                            <p><a href="{% url 'web:update_post' post.pk %}" class="btn btn-success"
+                                  role="button">update</a>
+                            <a href="{% url 'web:post_detail' post.pk %}" class="btn btn-success"
+                               role="button">Detail</a>
+                             <form method="post" action="{% url 'web:delete_post' post.pk %}  ">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Löschen</button>
+                            </form>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <br/>
+            <br/>
+            {% endfor %}
+            <div align="Right"><a href="{% url 'web:base' %}"><strong>Zurück zur
+                Haupseite</strong></a></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

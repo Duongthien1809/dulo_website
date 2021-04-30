@@ -1,0 +1,24 @@
+{% extends 'web/base.html' %}
+{% block title %} login {% endblock %}
+
+{% block authForm %}
+
+<div class="main-body" style="padding: 8px; border: 2px solid #8FBC8F; word-wrap: break-word;">
+    <!-- Display attributes of instance -->
+    <p><strong>Titel: {{ obj.title }}</strong></p> <br/>
+    <p><strong>Preis: </strong>{{ obj.preis }} <span>€</span></span></p> <br/>
+    <p><strong>Beschreibung: </strong>{{ obj.beschreibung }}</p> <br/>
+    <img src="{{obj.image.url}}" style="wight:500px;height:300px">
+    <br/>
+    <br/>
+    <p>
+   <form method="post" action="{% url 'web:delete_post' obj.pk %}  ">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger btn-sm">Löschen</button>
+    </form>
+    <a class="btn btn-success" href="{% url 'web:update_post' obj.pk %}">update</a></p>
+</div>
+
+
+{% endblock %}
+

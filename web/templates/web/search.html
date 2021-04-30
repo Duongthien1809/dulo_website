@@ -1,0 +1,13 @@
+{% extends 'web/base.html' %}
+{% block title %} Suchen {% endblock %}
+
+{% block authForm %}
+
+<h1>Search Result: </h1>
+{% if allposts|length == 0 %}
+<p>keine Ergebnisse gefunden!</p>
+deine Eingabe: <b>{{query}}</b> gibt's nicht
+{% endif %}
+{% for post in allposts %}
+{% endfor %}
+{% endblock %}

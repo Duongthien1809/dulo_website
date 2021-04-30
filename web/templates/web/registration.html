@@ -1,0 +1,63 @@
+{% extends 'web/base.html' %}
+{% block title %} Account anlegen {% endblock %}
+
+{% block authForm %}
+
+<div class="container">
+        <form action="{% url 'web:registration' %}" method="post">
+            {% csrf_token %}
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Registrieren</strong></div>
+                    <div class="panel-body">
+                        <div class="form-group clearfix">
+                            <div class="col-md-6">
+                                <label>Benutzername</label>
+                                <br/>
+                                {{ form.username}}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-md-6">
+                                <label>Password</label>
+                                <br/>
+                                {{ form.password}}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-md-6">
+                                <label>Password wiederholen</label>
+                                <br/>
+                                {{ form.password_repeat}}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                                <br/>
+                                {{ form.email}}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-md-6">
+                                <label>Vorname</label>
+                                <br/>
+                                {{ form.first_name}}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-md-6">
+                                <label>Nachname</label>
+                                <br/>
+                                {{ form.last_name}}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-md-offset-4">
+                            <input type="submit" value="registrieren" class="btn btn-success">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

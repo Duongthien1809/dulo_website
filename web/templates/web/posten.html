@@ -1,0 +1,26 @@
+{% extends 'web/base.html' %}
+{% block title %} Posten {% endblock %}
+
+{% block authForm %}
+<div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Anzeigedetails</strong></div>
+        <div class="panel-body">
+            <div class="form-group">
+                <form action="{% url 'web:posten' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{post_form.as_p}}
+                    <button>hochladen</button>
+                </form>
+            </div>
+            <div align="Right"><a href="{% url 'web:base' %}"><strong>Zurück zur Haupseite</strong></a></div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
